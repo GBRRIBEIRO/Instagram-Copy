@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instagram_copy/pages/direct/dm_page.dart';
 import 'package:instagram_copy/pages/home/home_page.dart';
 
@@ -27,16 +28,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        brightness: Brightness.dark,
-      ),
-      home: PageView(
-        controller: pageController,
-        children: [
-          HomePage(goDm),
-          DirectMessagePage(goHome),
-        ],
+    return ProviderScope(
+      child: MaterialApp(
+        theme: ThemeData(
+          brightness: Brightness.dark,
+        ),
+        home: PageView(
+          controller: pageController,
+          children: [
+            HomePage(goDm),
+            DirectMessagePage(goHome),
+          ],
+        ),
       ),
     );
   }

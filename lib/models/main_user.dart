@@ -4,12 +4,11 @@ import 'package:instagram_copy/models/user_base.dart';
 
 import 'chat.dart';
 
-class MainUser extends UserBase {
+class MainUser extends User {
   List<Story> userStories;
 
-  List<UserBase> friends;
+  List<User> friends;
   List<Post> feed;
-  List<Story> stories;
   List<Chat> chats;
 
   MainUser(
@@ -22,6 +21,5 @@ class MainUser extends UserBase {
     this.friends = const [],
     this.feed = const [],
     this.chats = const [],
-    this.stories = const [],
   });
 }
