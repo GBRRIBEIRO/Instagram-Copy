@@ -3,6 +3,7 @@ import 'package:instagram_copy/models/story.dart';
 import 'package:instagram_copy/models/user_base.dart';
 import 'package:uuid/uuid.dart';
 
+import '../models/comment.dart';
 import '../models/post.dart';
 
 List<User> USERS = [
@@ -40,13 +41,20 @@ List<User> USERS = [
   User(
       Uuid().toString(),
       'Gekko',
-      'dontkillwingman',
+      '_dontkillwingman',
       'https://pbs.twimg.com/ext_tw_video_thumb/1632070306113224704/pu/img/ovQexbGld3DyPabj.jpg:large',
       'I let wingman write my bio',
       posts: [
-        Post(
-          'https://pbs.twimg.com/media/Fqf2j5eWcAA4zb2.jpg',
-          DateTime.parse('11-11-2009'),
-        )
+        Post('https://pbs.twimg.com/media/FqZsSxraUAAfgzl.jpg',
+            DateTime.parse('2009-11-11'), '_dontkillwingman',
+            comments: [
+              Comment(
+                'openUpTheSkye',
+                false,
+                commentText: 'That is so cute!',
+              ),
+            ],
+            likes: 200,
+            subtitle: 'Teachin my boy lil\' wingman how I work, LOL'),
       ]),
 ];

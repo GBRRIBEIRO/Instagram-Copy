@@ -11,9 +11,10 @@ class AllCommentsText extends StatelessWidget {
       padding: const EdgeInsets.all(2.0),
       child: Text(
         'See all the $quantityOfComments comments',
-        style: TextStyle(
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
           color: Colors.grey,
+          fontSize: 16,
         ),
       ),
     );

@@ -1,22 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_copy/data/dummy_users.dart';
+import 'package:instagram_copy/models/post.dart';
+import 'package:instagram_copy/models/user_base.dart';
 import 'package:instagram_copy/pages/home/feed/all_comments_text.dart';
 import 'package:instagram_copy/pages/home/feed/liked_by_text.dart';
+import 'package:instagram_copy/pages/home/feed/post_avatar.dart';
+import 'package:instagram_copy/pages/home/feed/subtitle_text.dart';
 import 'package:instagram_copy/pages/home/stories/story_avatar.dart';
 
 class PostWidget extends StatefulWidget {
   const PostWidget(
       {super.key,
       required this.constraintBasedHeight,
-      required this.constraintBasedWidth});
+      required this.constraintBasedWidth,
+      required this.post});
 
   final double constraintBasedHeight;
   final double constraintBasedWidth;
+  final Post post;
 
   @override
   State<PostWidget> createState() => _PostWidgetState();
 }
 
 class _PostWidgetState extends State<PostWidget> {
+  User getPostUser(String tag) {
+    var user = USERS.where((user) => user.tag == tag).toList();
+    return user[0];
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -45,10 +57,17 @@ class _PostWidgetState extends State<PostWidget> {
                     children: [
                       Row(
                         children: [
-                          //StoryAvatar(isRead: true),
-                          const Text(
-                            'Tag',
-                            style: TextStyle(
+                          Container(
+                            margin: const EdgeInsets.fromLTRB(3, 0, 3, 0),
+                            width: constraints.maxHeight * 0.07,
+                            height: constraints.maxHeight * 0.07,
+                            child: PostAvatar(
+                                isRead: false,
+                                user: getPostUser(widget.post.userTag)),
+                          ),
+                          Text(
+                            widget.post.userTag,
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           ),
                         ],
@@ -58,16 +77,22 @@ class _PostWidgetState extends State<PostWidget> {
                     ],
                   ),
                 ),
-                SizedBox(
+                Container(
+                  decoration: BoxDecoration(
+                      border: Border(
+                    bottom: BorderSide(
+                      color: Theme.of(context).colorScheme.onBackground,
+                      width: 0.1,
+                    ),
+                  )),
                   width: double.infinity,
                   height: constraints.maxHeight * 0.60,
                   child: Image.network(
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbvuLruADwP85XloHkjzEoqu0ZJfShMWhlcA&usqp=CAU',
-                    fit: BoxFit.cover,
+                    widget.post.mediaUrl,
+                    fit: BoxFit.contain,
                   ),
                 ),
-                SizedBox(
-                  height: constraints.maxHeight * 0.3,
+                Expanded(
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -108,11 +133,29 @@ class _PostWidgetState extends State<PostWidget> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              LikedByText(
-                                likedBy: [],
-                              ),
-                              Text('Subtitle'),
-                              AllCommentsText(quantityOfComments: 100)
+                              widget.post.likes == null
+                                  ? const LikedByText(
+                                      likedBy: 0,
+                                    )
+                                  : LikedByText(
+                                      likedBy: widget.post.likes!,
+                                    ),
+                              widget.post.subtitle == null
+                                  ? Container()
+                                  : SizedBox(
+                                      width: constraints.maxWidth,
+                                      child: SubtitleText(
+                                        userTag: widget.post.userTag,
+                                        subtitle: widget.post.subtitle!,
+                                        maxConstraintWidth:
+                                            constraints.maxWidth,
+                                      ),
+                                    ),
+                              widget.post.comments == null
+                                  ? Container()
+                                  : AllCommentsText(
+                                      quantityOfComments:
+                                          widget.post.comments!.length)
                             ],
                           ),
                         )

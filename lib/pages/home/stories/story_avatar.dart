@@ -40,7 +40,7 @@ class _StoryAvatarState extends State<StoryAvatar> {
     return LayoutBuilder(builder: (context, constraints) {
       return Container(
         margin: const EdgeInsets.fromLTRB(3, 0, 3, 0),
-        padding: const EdgeInsets.all(3),
+        padding: const EdgeInsets.all(2),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           gradient: !widget.isRead ? gradientColor : transparentGradientColor,
