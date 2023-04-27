@@ -52,7 +52,7 @@ class _StoryAvatarState extends State<StoryAvatar> {
           padding: const EdgeInsets.all(5),
           decoration: BoxDecoration(
             border: Border.all(
-              color: Colors.white,
+              color: Theme.of(context).colorScheme.onSurface,
               width: 0.3,
             ),
             shape: BoxShape.circle,

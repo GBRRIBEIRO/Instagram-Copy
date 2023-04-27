@@ -38,7 +38,14 @@ class MyApp extends StatelessWidget {
                   TextStyle(color: Theme.of(context).colorScheme.onSurface)),
           brightness: Brightness.light,
         ),
-        darkTheme: ThemeData(brightness: Brightness.dark),
+        darkTheme: ThemeData(
+          scaffoldBackgroundColor: Colors.black,
+          brightness: Brightness.dark,
+          appBarTheme: AppBarTheme(
+            elevation: 0,
+            color: Colors.black,
+          ),
+        ),
         home: PageView(
           controller: pageController,
           children: [
