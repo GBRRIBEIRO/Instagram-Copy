@@ -31,8 +31,14 @@ class MyApp extends StatelessWidget {
     return ProviderScope(
       child: MaterialApp(
         theme: ThemeData(
-          brightness: Brightness.dark,
+          appBarTheme: AppBarTheme(
+              color: Theme.of(context).scaffoldBackgroundColor,
+              elevation: 0,
+              titleTextStyle:
+                  TextStyle(color: Theme.of(context).colorScheme.onSurface)),
+          brightness: Brightness.light,
         ),
+        darkTheme: ThemeData(brightness: Brightness.dark),
         home: PageView(
           controller: pageController,
           children: [

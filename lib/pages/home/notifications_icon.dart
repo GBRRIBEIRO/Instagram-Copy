@@ -11,6 +11,7 @@ class NotificationIcon extends StatelessWidget {
       children: [
         IconButton(
           onPressed: () {},
+          color: Theme.of(context).colorScheme.onSurface,
           icon: const Icon(Icons.favorite_outline_sharp),
           iconSize: 30,
         ),

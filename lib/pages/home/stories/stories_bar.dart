@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:instagram_copy/models/story.dart';
 import 'package:instagram_copy/pages/home/stories/story_avatar.dart';
+import 'package:instagram_copy/providers/main_user_provider.dart';
 import 'package:instagram_copy/providers/stories_provider.dart';
-import 'package:instagram_copy/providers/users_provider.dart';
 
 import '../../../models/user_base.dart';
 
@@ -21,20 +22,22 @@ class _StoriesBarState extends ConsumerState<StoriesBar> {
 
   @override
   Widget build(BuildContext context) {
-    List<User> userWithStories =
-        ref.read(storiesNotifierProvider.notifier).getUserWithStories();
+    List<Story> orderedStories = ref.watch(storiesNotifierProvider);
+    print(orderedStories);
+    //print(ref.read(storiesNotifierProvider.notifier).getOrderedStories());
     return Container(
+      height: MediaQuery.of(context).size.height * 0.12,
       padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
       child: ListView.builder(
-          itemCount: userWithStories.length,
+          itemCount: orderedStories.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: ((ctx, index) {
-            for (var userStory in userWithStories) {
-              return StoryAvatar(
-                isRead: false,
-                user: userStory,
-              );
-            }
+            return StoryAvatar(
+              isRead: orderedStories[index]
+                  .whoSawTag
+                  .contains(ref.read(mainUserProvider).tag),
+              image: orderedStories[index].userImage,
+            );
           })),
     );
   }

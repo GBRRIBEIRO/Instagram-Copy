@@ -1,6 +1,7 @@
 import 'package:instagram_copy/models/post.dart';
 import 'package:instagram_copy/models/story.dart';
 import 'package:instagram_copy/models/user_base.dart';
+import 'package:uuid/uuid.dart';
 
 import 'chat.dart';
 
@@ -15,7 +16,7 @@ class MainUser extends User {
     super.id,
     super.name,
     super.tag,
-    super.imageUrl,
+    super.image,
     super.biography, {
     this.userStories = const [],
     this.friends = const [],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instagram_copy/pages/home/feed/feed.dart';
 import 'package:instagram_copy/pages/home/feed/post_widget.dart';
 import 'package:instagram_copy/pages/home/message_icon.dart';
@@ -6,13 +7,13 @@ import 'package:instagram_copy/pages/home/notifications_icon.dart';
 import 'package:instagram_copy/pages/home/stories/stories_bar.dart';
 import 'package:instagram_copy/pages/home/title.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage(this.goDm, {super.key});
 
   final Function() goDm;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
         appBar: AppBar(
             title: Row(
@@ -21,7 +22,10 @@ class HomePage extends StatelessWidget {
                 DropdownButton(
                     items: [],
                     underline: Container(),
-                    icon: const Icon(Icons.expand_more, color: Colors.white),
+                    icon: Icon(
+                      Icons.expand_more,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
                     onChanged: (changes) {})
               ],
             ),
@@ -36,10 +40,6 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ]),
-        body: LayoutBuilder(
-          builder: (ctx, constraints) {
-            return Feed(constraints: constraints);
-          },
-        ));
+        body: Feed());
   }
 }

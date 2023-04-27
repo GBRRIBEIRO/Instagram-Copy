@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_copy/models/user_base.dart';
 
 class Story {
+  final Image userImage;
   final List<Image> media;
+  final List<String> whoSawTag;
 
-  Story(this.media);
+  Story(this.media, this.userImage, {this.whoSawTag = const []});
 }

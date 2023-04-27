@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
@@ -27,12 +28,17 @@ class SubtitleText extends StatelessWidget {
               children: [
                 TextSpan(
                   text: '$userTag: ',
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 16),
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSurface,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16),
                 ),
                 TextSpan(
                   text: subtitle,
-                  style: const TextStyle(fontSize: 16),
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
                 ),
               ],
             ),

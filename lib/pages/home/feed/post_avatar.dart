@@ -53,7 +53,7 @@ class _PostAvatarState extends State<PostAvatar> {
                   color: Theme.of(context).scaffoldBackgroundColor,
                 ),
                 child: ImageContainer(
-                  url: widget.user.imageUrl,
+                  image: widget.user.image,
                 ),
               ),
             )
@@ -68,7 +68,7 @@ class _PostAvatarState extends State<PostAvatar> {
                 color: Theme.of(context).scaffoldBackgroundColor,
               ),
               child: ImageContainer(
-                url: widget.user.imageUrl,
+                image: widget.user.image,
               ),
             );
     });

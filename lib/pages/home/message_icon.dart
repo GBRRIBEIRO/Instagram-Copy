@@ -20,6 +20,7 @@ class MessageIcon extends StatelessWidget {
           angle: -0.785398,
           child: IconButton(
             onPressed: () {},
+            color: Theme.of(context).colorScheme.onSurface,
             icon: const Icon(Icons.send),
             iconSize: 30,
           ),

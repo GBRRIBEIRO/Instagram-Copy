@@ -7,11 +7,11 @@ class StoryAvatar extends StatefulWidget {
   StoryAvatar({
     super.key,
     required this.isRead,
-    required this.user,
+    required this.image,
   });
 
   bool isRead;
-  final User user;
+  final Image image;
 
   @override
   State<StoryAvatar> createState() => _StoryAvatarState();
@@ -59,7 +59,7 @@ class _StoryAvatarState extends State<StoryAvatar> {
             color: Theme.of(context).scaffoldBackgroundColor,
           ),
           child: ImageContainer(
-            url: widget.user.imageUrl,
+            image: widget.image,
           ),
         ),
       );
