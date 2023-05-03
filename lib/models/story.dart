@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_copy/models/user_base.dart';
+import 'package:uuid/uuid.dart';
 
 class Story {
-  final String userTag;
-  final Image userImage;
-  final List<Image> media;
-  final List<String> whoSawTag;
+  final String id;
+  final Image media;
+  final List<User> whoSaw;
+  final int durationSeconds;
+  final DateTime postTime;
+  bool isRead;
 
-  Story(this.media, this.userImage, this.userTag, {this.whoSawTag = const []});
+  Story({
+    this.id = Uuid.NAMESPACE_OID,
+    required this.media,
+    this.whoSaw = const [],
+    this.durationSeconds = 6,
+    required this.postTime,
+    this.isRead = false,
+  });
 }

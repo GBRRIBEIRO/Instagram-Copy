@@ -21,6 +21,7 @@ class _FeedState extends ConsumerState<Feed> {
     var posts = ref.watch(orderedPostsProvider);
     return SingleChildScrollView(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           StoriesBar(),
           ListView.builder(

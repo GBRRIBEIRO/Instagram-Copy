@@ -8,22 +8,24 @@ import '../models/post.dart';
 
 List<User> USERS = [
   User(
-      Uuid().toString(),
-      'Zac Efron',
-      '_lilZack',
-      Image.network(
-          fit: BoxFit.cover,
-          'https://upload.wikimedia.org/wikipedia/commons/b/ba/Zac_Efron_on_the_red_carpet_of_the_Baywatch_in_Miami_02.png'),
-      'I am Zac'),
-  User(
-      Uuid().toString(),
-      'Zed',
-      'zed',
-      Image.network(
+    Uuid().toString(),
+    'Zac Efron',
+    '_lilZack',
+    Image.network(
         fit: BoxFit.cover,
-        'https://images.contentstack.io/v3/assets/blt93c07aad6c2c008a/blt871d9b6c6d8f1b79/63ea71072d874242f8bf3f40/Zed_0.jpg',
-      ),
-      'To the shadows you return'),
+        'https://upload.wikimedia.org/wikipedia/commons/b/ba/Zac_Efron_on_the_red_carpet_of_the_Baywatch_in_Miami_02.png'),
+    'I am Zac',
+  ),
+  User(
+    Uuid().toString(),
+    'Zed',
+    'zed',
+    Image.network(
+      fit: BoxFit.cover,
+      'https://images.contentstack.io/v3/assets/blt93c07aad6c2c008a/blt871d9b6c6d8f1b79/63ea71072d874242f8bf3f40/Zed_0.jpg',
+    ),
+    'To the shadows you return',
+  ),
   User(
     Uuid().toString(),
     'Goku',
@@ -34,12 +36,14 @@ List<User> USERS = [
     'Hi, I am goku',
     stories: [
       Story(
-        whoSawTag: ['gbr_ribeiro'],
-        [],
-        Image.network(
-            fit: BoxFit.cover,
-            'https://criticalhits.com.br/wp-content/uploads/2022/03/goku_an6e.h720-910x665.webp'),
-        'kakarott',
+        media: Image.network(
+            'https://i.pinimg.com/originals/56/76/5e/56765ec15e05300943362be479155439.jpg'),
+        postTime: DateTime(2023, 05, 03),
+      ),
+      Story(
+        media: Image.network('https://pbs.twimg.com/media/FYcDCYBX0AISAPu.jpg'),
+        postTime: DateTime(2023, 05, 03),
+        isRead: true,
       )
     ],
   ),
@@ -53,15 +57,10 @@ List<User> USERS = [
       'Who killed my fucking dog?',
       stories: [
         Story(
-          [
-            Image.network(
-                fit: BoxFit.cover,
-                'https://s26162.pcdn.co/wp-content/uploads/2022/07/John-Wicks-dog.jpg')
-          ],
-          Image.network(
+          media: Image.network(
               fit: BoxFit.cover,
-              'https://www.otempo.com.br/image/contentid/policy:1.2837016:1679680082/image-Diretor-chocou-estudio-com-final-de-John-Wick-4-Voce-e-insano.jpg'),
-          'babayaga',
+              'https://s26162.pcdn.co/wp-content/uploads/2022/07/John-Wicks-dog.jpg'),
+          postTime: DateTime(2023, 05, 03),
         ),
       ],
       posts: [

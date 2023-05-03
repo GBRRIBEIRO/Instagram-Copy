@@ -7,37 +7,39 @@ import '../models/main_user.dart';
 import '../models/story.dart';
 
 class StoriesNotifier extends StateNotifier<List<Story>> {
-  StoriesNotifier(stories) : super([]) {
-    state = stories;
+  StoriesNotifier(StateNotifierProviderRef ref) : super([]) {
+    MainUser mainUser = ref.read(mainUserProvider);
+    friends = mainUser.friends;
+    // MainUser mainUser = ref.read(mainUserProvider);
+    // List<User> friends = mainUser.friends;
+    // List<Story> stories = [];
+    // List<Story> storiesThatISaw = [];
+    // List<Story> returnStories = [];
+
+    // friends = friends.where((friend) => friend.stories != null).toList();
+    // friends.forEach((friend) {
+    //   stories.addAll(friend.stories as Iterable<Story>);
+    // });
+    // if (stories.length > 1) {
+    //   stories.sort((a, b) {
+    //     if (a.whoSawTag.contains(mainUser.tag) &&
+    //         !b.whoSawTag.contains(mainUser.tag)) {
+    //       return 1;
+    //     } else {
+    //       return 0;
+    //     }
+    //   });
+  }
+  late List<User> friends;
+  List<User> getFriendWithStories() {
+    //Return a list of friend wich have available stories
+    return friends.where((friend) => friend.stories != null).toList();
   }
 }
 
 final storiesNotifierProvider =
     StateNotifierProvider<StoriesNotifier, List<Story>>(
   (ref) {
-    MainUser mainUser = ref.read(mainUserProvider);
-    List<User> friends = mainUser.friends;
-    List<Story> stories = [];
-    List<Story> storiesThatISaw = [];
-    List<Story> returnStories = [];
-
-    friends = friends.where((friend) => friend.stories != null).toList();
-    friends.forEach((friend) {
-      stories.addAll(friend.stories as Iterable<Story>);
-    });
-    if (stories.length > 1) {
-      stories.sort((a, b) {
-        if (a.whoSawTag.contains(mainUser.tag) &&
-            !b.whoSawTag.contains(mainUser.tag)) {
-          return 1;
-        } else {
-          return 0;
-        }
-      });
-    }
-    // storiesThatISaw.addAll(
-    //     stories.where((story) => story.whoSawTag.contains(mainUser.tag)));
-
-    return StoriesNotifier(stories);
+    return StoriesNotifier(ref);
   },
 );
