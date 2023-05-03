@@ -12,7 +12,7 @@ class MainUserNotifier extends StateNotifier<MainUser> {
           'Gabriel Ribeiro',
           'gbr_ribeiro',
           Image.network(
-            'https://portalpopline.com.br/wp-content/uploads/2023/03/gekko-novo-agente-los-angeles-valorant.jpg',
+            'https://valorantinfo.com/images/br/gekko_valorant_icon_3436.webp',
             fit: BoxFit.cover,
           ),
           'Literally a gekko main',
