@@ -39,6 +39,7 @@ List<User> USERS = [
         Image.network(
             fit: BoxFit.cover,
             'https://criticalhits.com.br/wp-content/uploads/2022/03/goku_an6e.h720-910x665.webp'),
+        'kakarott',
       )
     ],
   ),
@@ -60,6 +61,7 @@ List<User> USERS = [
           Image.network(
               fit: BoxFit.cover,
               'https://www.otempo.com.br/image/contentid/policy:1.2837016:1679680082/image-Diretor-chocou-estudio-com-final-de-John-Wick-4-Voce-e-insano.jpg'),
+          'babayaga',
         ),
       ],
       posts: [
