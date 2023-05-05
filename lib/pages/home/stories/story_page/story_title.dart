@@ -1,22 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:instagram_copy/pages/home/stories/story_page/timed_box.dart';
 import 'package:instagram_copy/pages/home/stories/story_page/user_image.dart';
 
 import '../../../../models/user_base.dart';
 
 class StoryTitle extends StatefulWidget {
-  StoryTitle(
-      {super.key,
-      required this.user,
-      required this.index,
-      required this.range,
-      required this.widthFactorForBox});
+  StoryTitle({super.key, required this.user});
 
-  double widthFactorForBox;
-  final int index;
-  final int range;
   final User user;
 
   @override
@@ -24,11 +15,6 @@ class StoryTitle extends StatefulWidget {
 }
 
 class _StoryTitleState extends State<StoryTitle> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(

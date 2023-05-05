@@ -22,16 +22,16 @@ class _MyStoryState extends ConsumerState<MyStory> {
       padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => StoryPage(
-                user: User(
-              mainUser.id,
-              mainUser.name,
-              mainUser.tag,
-              mainUser.image,
-              mainUser.biography,
-            )),
-          ));
+          // Navigator.of(context).push(MaterialPageRoute(
+          //   builder: (context) => StoryPage(
+          //       user: User(
+          //     mainUser.id,
+          //     mainUser.name,
+          //     mainUser.tag,
+          //     mainUser.image,
+          //     mainUser.biography,
+          //   )),
+          // ));
         },
         child: Stack(children: [
           StoryAvatar(isRead: false, image: mainUser.image),

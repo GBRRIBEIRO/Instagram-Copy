@@ -28,10 +28,8 @@ class _PostImageState extends State<PostImage> {
     );
 
     if (w > h) {
-      print("no if");
       return true;
     } else {
-      print("no else");
       return false;
     }
   }

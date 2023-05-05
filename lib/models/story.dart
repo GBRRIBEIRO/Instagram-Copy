@@ -5,7 +5,7 @@ import 'package:uuid/uuid.dart';
 class Story {
   final String id;
   final Image media;
-  final List<User> whoSaw;
+  List<User> whoSaw;
   final int durationSeconds;
   final DateTime postTime;
   bool isRead;

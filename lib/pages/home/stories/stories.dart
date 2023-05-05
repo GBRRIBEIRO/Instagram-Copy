@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:instagram_copy/pages/home/stories/stories_page/stories_page.dart';
 import 'package:instagram_copy/providers/stories_provider.dart';
 
 import '../../../models/user_base.dart';
@@ -42,8 +43,8 @@ class _StoriesState extends ConsumerState<Stories> {
           itemBuilder: ((ctx, index) {
             return GestureDetector(
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) =>
-                    StoryPage(user: friendWithStoriesAvailable[index]),
+                builder: (_) => StoriesPage(
+                    users: friendWithStoriesAvailable, actualIndex: index),
               )),
               child: StoryAvatar(
                 isRead: isAllTheStoriesSeen(friendWithStoriesAvailable[index]),
